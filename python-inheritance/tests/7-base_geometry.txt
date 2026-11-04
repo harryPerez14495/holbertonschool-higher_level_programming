@@ -1,0 +1,96 @@
+BaseGeometry tests
+==================
+
+Load and instantiate the class:
+
+>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+>>> bg = BaseGeometry()
+
+The area method raises the required exception:
+
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+Positive integers are accepted and return None:
+
+>>> bg.integer_validator("width", 1)
+>>> bg.integer_validator("height", 89)
+>>> print(bg.integer_validator("size", 100))
+None
+
+Zero and negative integers are rejected:
+
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+...
+ValueError: distance must be greater than 0
+
+Strings and floats are rejected:
+
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+...
+TypeError: name must be an integer
+>>> bg.integer_validator("width", 3.0)
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+>>> bg.integer_validator("height", -2.5)
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+
+Booleans are rejected:
+
+>>> bg.integer_validator("flag", True)
+Traceback (most recent call last):
+...
+TypeError: flag must be an integer
+>>> bg.integer_validator("flag", False)
+Traceback (most recent call last):
+...
+TypeError: flag must be an integer
+
+Other types are rejected:
+
+>>> bg.integer_validator("size", None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> bg.integer_validator("size", [])
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> bg.integer_validator("size", {})
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> bg.integer_validator("size", ())
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> bg.integer_validator("size", {1})
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> bg.integer_validator("size", 1 + 2j)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Missing arguments raise TypeError:
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: ...
+>>> bg.integer_validator("width")
+Traceback (most recent call last):
+...
+TypeError: ...
