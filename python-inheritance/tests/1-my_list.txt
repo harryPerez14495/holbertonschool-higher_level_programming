@@ -1,39 +1,70 @@
 MyList tests
 ============
 
+Load the class:
+
 >>> MyList = __import__("1-my_list").MyList
 
-Verify inheritance:
+Check inheritance:
 
 >>> issubclass(MyList, list)
 True
 
-Verify sorted output and original order:
+Create an empty list:
 
->>> items = MyList([1, 4, 2, 3, 5])
->>> items.print_sorted()
-[1, 2, 3, 4, 5]
+>>> items = MyList()
 >>> print(items)
-[1, 4, 2, 3, 5]
+[]
 
-Verify an empty list:
+Check append independently:
+
+>>> items.append(3)
+>>> print(items)
+[3]
+>>> items.append(1)
+>>> print(items)
+[3, 1]
+>>> items.append(2)
+>>> print(items)
+[3, 1, 2]
+
+Print sorted values without changing the original:
+
+>>> items.print_sorted()
+[1, 2, 3]
+>>> print(items)
+[3, 1, 2]
+
+Check an empty list:
 
 >>> MyList().print_sorted()
 []
 
-Verify negative numbers and duplicates:
+Check negative numbers and duplicates:
 
->>> MyList([3, -1, 3, 0, -5]).print_sorted()
-[-5, -1, 0, 3, 3]
+>>> numbers = MyList()
+>>> numbers.append(-2)
+>>> numbers.append(4)
+>>> numbers.append(-5)
+>>> numbers.append(4)
+>>> numbers.print_sorted()
+[-5, -2, 4, 4]
+>>> print(numbers)
+[-2, 4, -5, 4]
 
-Verify a single element:
+Check an already sorted list:
+
+>>> MyList([1, 2, 3]).print_sorted()
+[1, 2, 3]
+
+Check a single element:
 
 >>> MyList([7]).print_sorted()
 [7]
 
-Verify the return value:
+Check the return value:
 
 >>> result = items.print_sorted()
-[1, 2, 3, 4, 5]
+[1, 2, 3]
 >>> print(result)
 None
