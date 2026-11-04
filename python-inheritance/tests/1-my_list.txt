@@ -1,0 +1,39 @@
+MyList tests
+============
+
+>>> MyList = __import__("1-my_list").MyList
+
+Verify inheritance:
+
+>>> issubclass(MyList, list)
+True
+
+Verify sorted output and original order:
+
+>>> items = MyList([1, 4, 2, 3, 5])
+>>> items.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(items)
+[1, 4, 2, 3, 5]
+
+Verify an empty list:
+
+>>> MyList().print_sorted()
+[]
+
+Verify negative numbers and duplicates:
+
+>>> MyList([3, -1, 3, 0, -5]).print_sorted()
+[-5, -1, 0, 3, 3]
+
+Verify a single element:
+
+>>> MyList([7]).print_sorted()
+[7]
+
+Verify the return value:
+
+>>> result = items.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(result)
+None
