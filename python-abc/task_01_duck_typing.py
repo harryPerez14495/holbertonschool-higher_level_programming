@@ -45,11 +45,11 @@ class Rectangle(Shape):
 
     def area(self):
         """Return a nonnegative area."""
-        return abs(self.width) * abs(self.height)
+        return self.width * self.height
 
     def perimeter(self):
         """Return a nonnegative perimeter."""
-        return 2 * (abs(self.width) + abs(self.height))
+        return 2 * (self.width + self.height)
 
 
 def shape_info(shape):
